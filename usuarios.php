@@ -1,11 +1,19 @@
-<?php
+ <?php
     require_once('inc/classes.php');
 
     $Usuario = new Usuario;
-    echo '<pre>';
-    print_r($Usuario->listar());
-    echo '<pre>';
-?>
+    // echo '<pre>';
+    // print_r($Usuario->listar());
+    // echo '<pre>';
+
+    //cadastrar usuários
+    $dados = array(
+        'nome' => 'ALVARO GOMES FENERICK',
+        'email' => 'alvaro@fenerick.com',
+        'senha' => '321'
+    );
+    echo $Usuario->cadastrar($dados);
+?> 
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -54,10 +62,18 @@
                         
                     ?>
                     <tr>
-                        <td>VER || EDITAR || EXCLUIR</td>
-                        <td><?php echo $usuario['id_usuario'] ?></td>
-                        <td><?php echo $usuario['nome'] ?></td>
-                        <td><?php echo $usuario['email'] ?></td>
+                        <td>
+                            VER || EDITAR || EXCLUIR
+                        </td>
+                        <td>
+                            <?php echo $usuario->id_usuario ?>
+                        </td>
+                        <td>
+                            <?php echo $usuario->nome ?>
+                        </td>
+                        <td>
+                            <?php echo $usuario->email ?>
+                        </td>
                     </tr>
                     <?php
                         }//fecha foreach
