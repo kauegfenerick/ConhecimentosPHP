@@ -1,3 +1,11 @@
+<?php
+
+require_once('inc/classes.php');
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

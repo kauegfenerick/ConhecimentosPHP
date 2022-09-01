@@ -1,3 +1,12 @@
+<?php
+    require_once('inc/classes.php');
+
+    $Usuario = new Usuario;
+    echo '<pre>';
+    print_r($Usuario->listar());
+    echo '<pre>';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,7 +34,37 @@
         <!-- /MENU -->
         <!-- CONTEUDO -->
         <div>
-            <h1> USUÁRIOS </h1>
+            <h1 class="fw-bold"> USUÁRIOS </h1>
+            <!-- tabela de usuário-->
+
+            <table class="table table-striped-columns">
+                <thead>
+                    <tr>
+                        <th>Ações</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $usuarios = $Usuario->listar();
+                        foreach ($usuarios as $usuario) {
+                            
+                        
+                    ?>
+                    <tr>
+                        <td>VER || EDITAR || EXCLUIR</td>
+                        <td><?php echo $usuario['id_usuario'] ?></td>
+                        <td><?php echo $usuario['nome'] ?></td>
+                        <td><?php echo $usuario['email'] ?></td>
+                    </tr>
+                    <?php
+                        }//fecha foreach
+                    ?>
+                </tbody>
+            </table>
+            <!-- \tabela de usuário-->
         </div>
         <!-- /CONTEUDO -->
         <!-- RODAPE -->
