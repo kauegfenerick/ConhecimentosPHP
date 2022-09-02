@@ -7,12 +7,12 @@
     // echo '<pre>';
 
     //cadastrar usuários
-    $dados = array(
-        'nome' => 'ALVARO GOMES FENERICK',
-        'email' => 'alvaro@fenerick.com',
-        'senha' => '321'
-    );
-    echo $Usuario->cadastrar($dados);
+    // $dados = array(
+    //     'nome' => 'ALVARO GOMES FENERICK',
+    //     'email' => 'alvaro@fenerick.com',
+    //     'senha' => '321'
+    // );
+    // echo $Usuario->cadastrar($dados);
 ?> 
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@
         <!-- /MENU -->
         <!-- CONTEUDO -->
         <div>
-            <h1 class="fw-bold"> USUÁRIOS </h1>
+            <h1 class="fw-bold"> USUÁRIOS - <a class="fw-bold btn btn-primary" href="<?php echo URL?>/usuario-cadastrar.php">Cadastrar</a></h1>
             <!-- tabela de usuário-->
 
             <table class="table table-striped-columns">
