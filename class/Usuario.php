@@ -63,6 +63,15 @@
             //executar
             $sql->execute();
         }
+        
+        public function apagar(int $id_usuario)
+        {
+            $sqp = $this->pdo->prepare("DELETE FROM usuarios WHERE id_usuario = :id_usuario");
+
+            $sql->bindParam(':id_usuario', $id_usuario);
+
+            $sql->execute();
+        }
     }
 
 ?>
