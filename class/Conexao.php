@@ -11,7 +11,7 @@ class Conexao
     {
         # Informações sobre o banco de dados:
         $db_host    = "localhost";   // servidor
-        $db_nome    = "senagram"; //nome do banco
+        $db_nome    = "senagran"; //nome do banco
         $db_usuario = "root"; //usuario do banco
         $db_senha   = "";
         $db_driver  = "mysql";

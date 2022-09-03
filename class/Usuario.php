@@ -26,17 +26,42 @@
         {
             //conexão e consulta no banco de dados
             $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)");
+            
+            //tratar dados
+            $nome = trim(strtoupper($dados['nome']));
+            $email = trim(strtoupper($dados['email']));
+            $email = md5(($dados['senha']));
 
             //mesclar ou tratar os dados
-            $sql->bindParam(':nome',$dados['nome']);
-            $sql->bindParam(':email',$dados['email']);
-            $sql->bindParam(':senha',$dados['senha']);
+            $sql->bindParam(':nome',$nome['nome']);
+            $sql->bindParam(':email',$email['email']);
+            $sql->bindParam(':senha',$senha['senha']);
 
             //executar
             $sql->execute();
 
             //retorno de dados
             return $this->pdo->lastInsertId();
+        }
+
+        public function atualizar(array $dados)
+        {
+            //conexão e consulta no banco de dados
+            $sql = $this->pdo->prepare("UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id_usuario  = id_usuario LIMIT 1");
+            
+            //tratar dados
+            $nome = trim(strtoupper($dados['nome']));
+            $email = trim(strtoupper($dados['email']));
+            $email = md5(($dados['senha']));
+
+            //mesclar ou tratar os dados
+            $sql->bindParam(':nome',$nome['nome']);
+            $sql->bindParam(':email',$email['email']);
+            $sql->bindParam(':senha',$senha['senha']);
+            $sql->bindParam(':id_usuario',$dados['id_usuario']);
+            
+            //executar
+            $sql->execute();
         }
     }
 

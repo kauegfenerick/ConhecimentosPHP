@@ -63,7 +63,7 @@
                     ?>
                     <tr>
                         <td>
-                            VER || EDITAR || EXCLUIR
+                            <a href="#">VER</a> || <a href="#">EDITAR</a> || <a href="#">EXCLUIR</a>
                         </td>
                         <td>
                             <?php echo $usuario->id_usuario ?>
