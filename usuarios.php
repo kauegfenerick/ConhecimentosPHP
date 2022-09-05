@@ -58,12 +58,12 @@
                     <?php
                         $usuarios = $Usuario->listar();
                         foreach ($usuarios as $usuario) {
-                            
-                        
                     ?>
                     <tr>
                         <td>
-                            <a href="#">VER</a> || <a href="#">EDITAR</a> || <a href="#">EXCLUIR</a>
+                            <a href="#">VER</a> || 
+                            <a href="<?php echo URL?>usuario-atualizar.php?id=<?php echo $usuario->id_usuario?>">EDITAR</a> || 
+                            <a href="<?php echo URL?>usuario-deletar.php?id=<?php echo $usuario->id_usuario?>">EXCLUIR</a>
                         </td>
                         <td>
                             <?php echo $usuario->id_usuario ?>
