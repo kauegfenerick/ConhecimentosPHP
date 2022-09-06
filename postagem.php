@@ -1,5 +1,8 @@
 <?php
         require_once('inc/classes.php');
+
+        $Postagem = new Postagem();
+
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +32,55 @@
         <!-- /MENU -->
         <!-- CONTEUDO -->
         <div>
-            <h1> POSTAGEM </h1>
+            <h1 class="col-md-12 fw-bold" > POSTAGENS - <a class="fw-bold btn btn-dark" href="<?php echo URL?>/postagem-criar.php">Publicar <i class="bi bi-plus-circle"></i></a></h1>
         </div>
         <!-- /CONTEUDO -->
+        <table class="table table-striped-columns">
+                <thead>
+                    <tr>
+                        <th>Ações</th>
+                        <th>ID</th>
+                        <th>Usuário</th>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th>Gostei</th>
+                        <th>Não gostei</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $postagens = $Postagem->listar();
+                        foreach ($postagens as $Postagem) {
+                    ?>
+                    <tr>
+                        <td>
+                            <a href="<?php echo URL?>postagem-exibir.php?id=<?php echo $Postagem->id_postagem?>"><i class="bi bi-eye-fill text-dark"></i></a>  
+                            <a href="<?php echo URL?>postagem-atualizar.php?id=<?php echo $Postagem->id_usuario?>"><i class="bi bi-pencil-square text-dark"></i></a> 
+                            <a href="<?php echo URL?>postagem-deletar.php?id=<?php echo $Postagem->id_usuario?>"><i class="bi bi-trash-fill text-dark"></i>
+</a>
+                        </td>
+                        <td>
+                            <?php echo $Postagem->id_postagem ?>
+                        </td>
+                        <td>
+                            <?php echo $Postagem->id_usuario ?>
+                        </td>
+                        <td>
+                            <?php echo $Postagem->dt ?>
+                        </td>
+                        <td>
+                            <?php echo $Postagem->descricao ?>
+                        </td>
+                        <td>
+                            <?php echo $Postagem->gostei ?>
+                        </td>
+                        <td>
+                            <?php echo $Postagem->naogostei ?>
+                        </td>
+                    </tr>
+                    <?php
+                        }//fecha foreach
+                    ?>
         <!-- RODAPE -->
         <?php
             include_once('inc/rodape.php');
