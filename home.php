@@ -25,11 +25,11 @@ require_once('inc/classes.php');
     <!-- /JS -->
 </head>
 <body>
-    <div class="container">
-        <!-- MENU --> 
         <?php
             require_once('inc/menu.php');            
-        ?>             
+        ?>   
+    <div class="container">
+        <!-- MENU -->           
         <!-- /MENU -->
         <!-- CONTEUDO -->
         <div>

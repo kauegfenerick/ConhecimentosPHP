@@ -34,15 +34,15 @@
     <!-- /JS -->
 </head>
 <body>
-    <div class="container">
-        <!-- MENU --> 
         <?php
             require_once('inc/menu.php');            
-        ?>             
+        ?>   
+    <div class="container">
+        <!-- MENU -->           
         <!-- /MENU -->
         <!-- CONTEUDO -->
         <div>
-            <h1 class="fw-bold"> USUÁRIOS - <a class="fw-bold btn btn-primary" href="<?php echo URL?>/usuario-cadastrar.php">Cadastrar</a></h1>
+            <h1 class="fw-bold"> USUÁRIOS - <a class="fw-bold btn btn-dark" href="<?php echo URL?>/usuario-cadastrar.php">Cadastrar</a></h1>
             <!-- tabela de usuário-->
 
             <table class="table table-striped-columns">
@@ -61,9 +61,10 @@
                     ?>
                     <tr>
                         <td>
-                            <a href="#">VER</a> || 
-                            <a href="<?php echo URL?>usuario-atualizar.php?id=<?php echo $usuario->id_usuario?>">EDITAR</a> || 
-                            <a href="<?php echo URL?>usuario-deletar.php?id=<?php echo $usuario->id_usuario?>">EXCLUIR</a>
+                            <a href="#"><i class="bi bi-eye-fill text-dark"></i></a>  
+                            <a href="<?php echo URL?>usuario-atualizar.php?id=<?php echo $usuario->id_usuario?>"><i class="bi bi-pencil-square text-dark"></i></a> 
+                            <a href="<?php echo URL?>usuario-deletar.php?id=<?php echo $usuario->id_usuario?>"><i class="bi bi-trash-fill text-dark"></i>
+</a>
                         </td>
                         <td>
                             <?php echo $usuario->id_usuario ?>

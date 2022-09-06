@@ -33,11 +33,11 @@ $usuario = $Usuario->mostrar($_GET['id'])
     <!-- /JS -->
 </head>
 <body>
-    <div class="container">
-        <!-- MENU --> 
         <?php
             require_once('inc/menu.php');            
-        ?>             
+        ?> 
+    <div class="container">
+        <!-- MENU -->             
         <!-- /MENU -->
         <!-- CONTEUDO -->
         <div>
@@ -64,7 +64,7 @@ $usuario = $Usuario->mostrar($_GET['id'])
                         <input type="password" name="confirma_senha" id="confirma_senha" class="form-control">                        
                     </div>
                     <div class="offset-11 col-md-1 mt-2">
-                        <input class="btn btn-primary" type="submit" 
+                        <input class="btn btn-success" type="submit" 
                         name="btnCadastrar" value="Cadastrar">
                     </div>
                 </div>
