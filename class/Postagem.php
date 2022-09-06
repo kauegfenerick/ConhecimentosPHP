@@ -80,5 +80,23 @@
 
             return $sql->fetch(PDO::FETCH_OBJ);
         }
+        
+        public function gostei(int $id_postagem)
+        {
+            $sql = $this->pdo->prepare("UPDATE postagens SET gostei = gostei++ WHERE id_postagem = :id_postagem");
+
+            $sql->bindParam(':id_postagem',$id_postagem);
+
+            $sql->execute();
+        }
+
+        public function naogostei(int $id_postagem)
+        {
+            $sql = $this->pdo->prepare("UPDATE postagens SET naogostei = naogostei++ WHERE id_postagem = :id_postagem");
+
+            $sql->bindParam(':id_postagem',$id_postagem);
+
+            $sql->execute();
+        }
     }
 ?>
