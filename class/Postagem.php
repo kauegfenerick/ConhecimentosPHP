@@ -21,26 +21,36 @@
             return $sql->fetchAll(PDO::FETCH_OBJ);
         }
 
-        public function cadastrar(Array $dados = null)
+        public function cadastrar(Array $dados = null, $foto)
         {
-            //conexão e consulta no banco de dados
-            $sql = $this->pdo->prepare("INSERT INTO postagens (id_postagem, descricao, dt) VALUES (:id_postagem, :descricao, :dt)");
+            echo '<pre>';
+            // print_r($dados);
+            // var_dump($dados);
+            print_r($foto);
+            var_dump($foto);
+            $extensao = 
+            // $teste = move_uploaded_file($foto['tmp_name'],'./imagens/'.$foto['name']);
+            // print $teste;
+            echo '</pre>';
+            die();
+            // //conexão e consulta no banco de dados
+            // $sql = $this->pdo->prepare("INSERT INTO postagens (id_postagem, descricao, dt) VALUES (:id_postagem, :descricao, :dt)");
             
-            //tratar dados
-            $id_postagem = $dados['id_postagem'];
-            $descricao = trim($dados['descricao']);
-            $dt = date('Y-m-d');
+            // //tratar dados
+            // $id_postagem = $dados['id_postagem'];
+            // $descricao = trim($dados['descricao']);
+            // $dt = date('Y-m-d');
 
-            //mesclar ou tratar os dados
-            $sql->bindParam(':id_postagem',$id_postagem);
-            $sql->bindParam(':descricao',$descricao);
-            $sql->bindParam(':dt',$dt);
+            // //mesclar ou tratar os dados
+            // $sql->bindParam(':id_postagem',$id_postagem);
+            // $sql->bindParam(':descricao',$descricao);
+            // $sql->bindParam(':dt',$dt);
 
-            //executar
-            $sql->execute();
+            // //executar
+            // $sql->execute();
 
-            //retorno de dados
-            return $this->pdo->lastInsertId();
+            // //retorno de dados
+            // return $this->pdo->lastInsertId();
         }
 
         public function atualizar(array $dados)
