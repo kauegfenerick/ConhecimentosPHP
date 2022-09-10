@@ -39,6 +39,7 @@
                 <thead>
                     <tr>
                         <th>Ações</th>
+                        <th>Foto</th>
                         <th>ID</th>
                         <th>Usuário</th>
                         <th>Data</th>
@@ -56,8 +57,12 @@
                         <td>
                             <a href="<?php echo URL?>postagem-exibir.php?id=<?php echo $Postagem->id_postagem?>"><i class="bi bi-eye-fill text-dark"></i></a>  
                             <a href="<?php echo URL?>postagem-atualizar.php?id=<?php echo $Postagem->id_usuario?>"><i class="bi bi-pencil-square text-dark"></i></a> 
-                            <a href="<?php echo URL?>postagem-deletar.php?id=<?php echo $Postagem->id_usuario?>"><i class="bi bi-trash-fill text-dark"></i>
-</a>
+                            <a href="<?php echo URL?>postagem-deletar.php?id=<?php echo $Postagem->id_usuario?>"><i class="bi bi-trash-fill text-dark"></i></a>
+                        </td>
+                        <td>
+                            <div class="text-center">
+                                <?php echo'<img class="img-fluid img-thumbnail allign-center" width="150" src="'.URL.'imagens/'.$Postagem->foto.'">'?>
+                            </div>
                         </td>
                         <td>
                             <?php echo $Postagem->id_postagem ?>

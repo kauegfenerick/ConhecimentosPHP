@@ -25,19 +25,19 @@
     ?>
     <!-- /JS -->
 </head>
-<body>
-    <div class="container">
-        <!-- MENU --> 
+<body>       
+     <!-- MENU --> 
         <?php
             require_once('inc/menu.php');            
         ?>             
         <!-- /MENU -->
+    <div class="container">
         <!-- CONTEUDO -->
         <div>
             <h1> CADASTRO DE POSTAGEM </h1>
             <form action="?" method="post" enctype="multipart/form-data">
                 <!-- CAMPO OCULTO -->
-                <input type="hidden" name="id_usuario" value="4">
+                <input type="hidden" name="id_usuario" value="2">
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="form-label" for="descricao">Descrição*</label>

@@ -23,40 +23,58 @@
 
         public function cadastrar(Array $dados = null, $foto)
         {
-            echo '<pre>';
-            // print_r($dados);
-            // var_dump($dados);
-            print_r($foto);
-            var_dump($foto);
-            $extensao = 
-            // $teste = move_uploaded_file($foto['tmp_name'],'./imagens/'.$foto['name']);
-            // print $teste;
-            echo '</pre>';
-            die();
-            // //conexão e consulta no banco de dados
-            // $sql = $this->pdo->prepare("INSERT INTO postagens (id_postagem, descricao, dt) VALUES (:id_postagem, :descricao, :dt)");
+            $partes = explode('.',$foto['name']);
+            $extensao = end($partes);
+            $novoNome = date('dmYHis').'.'.$extensao;
+            $ok = move_uploaded_file($foto['tmp_name'],'./imagens/'.$novoNome);
+            if ($ok) {
+                $imagem = $novoNome;
+            }
+            else {
+                $imagem = null;
+            }
+
+            //conexão e consulta no banco de dados
+            $sql = $this->pdo->prepare("INSERT INTO postagens (id_usuario, descricao, dt, foto) VALUES (:id_usuario, :descricao, :dt, :foto)");
             
-            // //tratar dados
-            // $id_postagem = $dados['id_postagem'];
-            // $descricao = trim($dados['descricao']);
-            // $dt = date('Y-m-d');
+            //tratar dados
+            $id_usuario = $dados['id_usuario'];
+            $descricao = trim($dados['descricao']);
+            $dt = date('Y-m-d');
 
-            // //mesclar ou tratar os dados
-            // $sql->bindParam(':id_postagem',$id_postagem);
-            // $sql->bindParam(':descricao',$descricao);
-            // $sql->bindParam(':dt',$dt);
+            //mesclar ou tratar os dados
+            $sql->bindParam(':id_usuario',$id_usuario);
+            $sql->bindParam(':descricao',$descricao);
+            $sql->bindParam(':dt',$dt);
+            $sql->bindParam(':foto',$imagem);
 
-            // //executar
-            // $sql->execute();
+            //executar
+            $sql->execute();
 
-            // //retorno de dados
-            // return $this->pdo->lastInsertId();
+            //retorno de dados
+            return $this->pdo->lastInsertId();
         }
 
-        public function atualizar(array $dados)
+        public function atualizar(array $dados, $foto)
         {
+            if($foto['name'] != ''){
+            $partes = explode('.',$foto['name']);
+            $extensao = end($partes);
+            $novoNome = date('dmYHis').'.'.$extensao;
+            $ok = move_uploaded_file($foto['tmp_name'],'./imagens/'.$novoNome);
+            if ($ok) {
+                $imagem = $novoNome;
+            }
+            else {
+                $imagem = $dados['foto_atual'];
+            }
+        }
+        else {
+            $imagem = $dados['foto_atual'];
+        }
+
             //conexão e consulta no banco de dados
-            $sql = $this->pdo->prepare("UPDATE postagens SET descricao = :descricao, dt = :dt WHERE id_postagem  = :id_postagem LIMIT 1");
+            $sql = $this->pdo->prepare("UPDATE postagens SET descricao = :descricao, dt = :dt, foto = :foto WHERE id_postagem  = :id_postagem LIMIT 1");
             
             //tratar dados
             $descricao  = trim($dados['descricao']);
@@ -65,6 +83,7 @@
             //mesclar ou tratar os dados
             $sql->bindParam(':descricao',$descricao);
             $sql->bindParam(':dt', $dt);
+            $sql->bindParam(':foto', $imagem);
             $sql->bindParam(':id_postagem',$dados['id_postagem']);
             
             //executar
